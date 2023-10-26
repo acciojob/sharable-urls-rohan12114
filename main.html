@@ -1,8 +1,32 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <script type="text/javascript" src="./script.js">
-</script>
+  <form id="urlForm">
+    <label for="name">name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="year">year:</label>
+    <input type="number" id="year" name="year" required><br>
+
+    <input type="submit" id="button" value="Generate URL">
+  </form>
+  <h3 id="url">https://localhost:8080/</h3>
+  <script>
+    document.getElementById('urlForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+  
+      const name = document.getElementById('name').value;
+      const year = document.getElementById('year').value;
+  
+      // Construct the query string
+      const queryString = `?name=${encodeURIComponent(name)}&year=${year}`;
+  
+      // Update the URL in the h3 element
+      const urlElement = document.getElementById('url');
+      urlElement.textContent = `https://localhost:8080/${queryString}`;
+    });
+  </script>   
+
   </body>
 
 </html>
